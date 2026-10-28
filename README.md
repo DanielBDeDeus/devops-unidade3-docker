@@ -91,7 +91,7 @@ Veja `evidencias/Relatorio-Evidencias-Docker-Unidade3.html`, PDF (quando gerado)
 
 ## Git
 
-URL do repositorio: NAO PUBLICADO (exige autenticacao no GitHub)
+URL do repositorio: https://github.com/DanielBDeDeus/devops-unidade3-docker
 
 Para publicar com o script, use `-PublishGitHub -PublicRepository` depois de autenticar o GitHub CLI (`gh auth login`). Sem autenticacao, o projeto e os comprovantes continuam locais.
 
