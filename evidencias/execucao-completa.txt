@@ -1,0 +1,912 @@
+﻿[2026-10-28 09:49:47] Iniciando nova execucao (progressao e diagnostico habilitados).
+[2026-10-28 09:49:48] INICIANDO ETAPA 1/22: Preparar pastas de trabalho protegidas
+[2026-10-28 09:49:48] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\.ceub-docker-unidade3.marker
+
+================ INICIO DE EXECUCAO 2026-10-28 09:49:48 ================
+[2026-10-28 09:49:48] INICIANDO ETAPA 2/22: Validar Docker Engine e Compose (sem UAC)
+[2026-10-28 09:49:48] > C:\Program Files\Docker\Docker\resources\bin\docker.exe --version
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe --version
+Docker version 29.5.2, build 79eb04c
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe info --format {{.ServerVersion}}
+29.5.2
+[exit=0, duracao=1s]
+[2026-10-28 09:49:49] > C:\Program Files\Docker\Docker\resources\bin\docker.exe compose version
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe compose version
+Docker Compose version v5.1.3
+[exit=0, duracao=0s]
+[2026-10-28 09:49:50] INICIANDO ETAPA 3/22: Preparar .NET 10 sem administrador
+> C:\Program Files\dotnet\dotnet.exe --list-sdks
+10.0.201 [C:\Program Files\dotnet\sdk]
+10.0.300 [C:\Program Files\dotnet\sdk]
+[exit=0, duracao=1s]
+[2026-10-28 09:49:50] > C:\Program Files\dotnet\dotnet.exe --version
+> C:\Program Files\dotnet\dotnet.exe --version
+10.0.300
+[exit=0, duracao=1s]
+[2026-10-28 09:49:51] INICIANDO ETAPA 4/22: Testar o Docker com hello-world
+[2026-10-28 09:49:51] > C:\Program Files\Docker\Docker\resources\bin\docker.exe run --rm hello-world
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe run --rm hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+[exit=0, duracao=4s]
+[2026-10-28 09:49:55] INICIANDO ETAPA 5/22: Gerar a API ASP.NET Core e os arquivos de build
+[2026-10-28 09:49:55] > C:\Program Files\dotnet\dotnet.exe new webapi -n DevOpsWebApi -o C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi --framework net10.0 --no-restore
+> C:\Program Files\dotnet\dotnet.exe new webapi -n DevOpsWebApi -o C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi --framework net10.0 --no-restore
+O modelo "API Web do ASP.NET Core" foi criado com êxito.
+
+[exit=0, duracao=1s]
+[2026-10-28 09:49:56] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\DevOpsWebApi.csproj
+[2026-10-28 09:49:56] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\Dockerfile
+[2026-10-28 09:49:56] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\.dockerignore
+[2026-10-28 09:49:56] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\.gitignore
+[2026-10-28 09:49:57] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\Program.cs
+[2026-10-28 09:49:57] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\Program-v1.0.0.cs.txt
+[2026-10-28 09:49:57] > C:\Program Files\dotnet\dotnet.exe restore C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\DevOpsWebApi.csproj
+> C:\Program Files\dotnet\dotnet.exe restore C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\DevOpsWebApi.csproj
+  Determinando os projetos a serem restaurados...
+  C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\DevOpsWebApi.csproj restaurado (em 150 ms).
+[exit=0, duracao=2s]
+[2026-10-28 09:49:59] > C:\Program Files\dotnet\dotnet.exe build C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\DevOpsWebApi.csproj -c Release --no-restore
+> C:\Program Files\dotnet\dotnet.exe build C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\DevOpsWebApi.csproj -c Release --no-restore
+  DevOpsWebApi -> C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\bin\Release\net10.0\DevOpsWebApi.dll
+
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:04.34
+[exit=0, duracao=6s]
+[2026-10-28 09:50:05] INICIANDO ETAPA 6/22: Validar os endpoints da API 1.0.0 sem Docker
+[2026-10-28 09:50:05] API local v1.0.0: PID 9372, porta 5096
+[2026-10-28 09:50:05] Aguardando HTTP 200 de http://127.0.0.1:5096/ (ate 30 tentativas)
+[2026-10-28 09:50:06] HTTP 200 <- http://127.0.0.1:5096/
+GET http://127.0.0.1:5096/
+HTTP 200 (esperado 200)
+{"application":"DevOps Web API","version":"1.0.0","environment":"development"}
+[2026-10-28 09:50:06] Aguardando HTTP 200 de http://127.0.0.1:5096/health (ate 30 tentativas)
+[2026-10-28 09:50:06] HTTP 200 <- http://127.0.0.1:5096/health
+GET http://127.0.0.1:5096/health
+HTTP 200 (esperado 200)
+{"status":"healthy","version":"1.0.0","environment":"development","timestamp":"2026-10-28T12:50:06.509129Z"}
+[2026-10-28 09:50:07] INICIANDO ETAPA 7/22: Verificar que os nomes/portas do Docker nao pertencem a outros projetos
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api
+
+[stderr] Error response from daemon: No such container: devops-api
+[exit=1, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api-staging
+
+[stderr] Error response from daemon: No such container: devops-api-staging
+[exit=1, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api-prod
+
+[stderr] Error response from daemon: No such container: devops-api-prod
+[exit=1, duracao=0s]
+[2026-10-28 09:50:09] INICIANDO ETAPA 8/22: Proteger imagens Docker preexistentes de outros projetos
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image inspect -f {{json .Config.Labels}} devops-webapi:1.0.0
+
+[stderr] Error response from daemon: No such image: devops-webapi:1.0.0
+[exit=1, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image inspect -f {{json .Config.Labels}} devops-webapi:1.1.0
+
+[stderr] Error response from daemon: No such image: devops-webapi:1.1.0
+[exit=1, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image inspect -f {{json .Config.Labels}} devops-webapi:1.2.0
+
+[stderr] Error response from daemon: No such image: devops-webapi:1.2.0
+[exit=1, duracao=0s]
+[2026-10-28 09:50:10] INICIANDO ETAPA 9/22: Construir imagem versionada 1.0.0
+[2026-10-28 09:50:10] > C:\Program Files\Docker\Docker\resources\bin\docker.exe build -t devops-webapi:1.0.0 C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe build -t devops-webapi:1.0.0 C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi
+[stderr] #0 building with "desktop-linux" instance using docker driver
+[stderr] 
+[stderr] #1 [internal] load build definition from Dockerfile
+[stderr] #1 transferring dockerfile: 461B done
+[stderr] #1 DONE 0.0s
+[stderr] 
+[stderr] #2 [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+[stderr] #2 ...
+[stderr] 
+[stderr] #3 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+[stderr] #3 DONE 0.5s
+[stderr] 
+[stderr] #2 [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+[stderr] #2 DONE 0.5s
+[stderr] 
+[stderr] #4 [internal] load .dockerignore
+[stderr] #4 transferring context: 113B done
+[stderr] #4 DONE 0.0s
+[stderr] 
+[stderr] #5 [internal] load build context
+[stderr] #5 DONE 0.0s
+[stderr] 
+[stderr] #6 [runtime 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:de0ee358cdd672f7017a003bed21e9ac9ed48a27c922a59b18175b6e82fa7fee
+[stderr] #6 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:de0ee358cdd672f7017a003bed21e9ac9ed48a27c922a59b18175b6e82fa7fee 0.1s done
+[stderr] #6 DONE 0.1s
+[stderr] 
+[stderr] #7 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:de4fe90a98845d75910b9769662465c84de1a934665c431279d1382b2bddc02b
+[stderr] #7 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:de4fe90a98845d75910b9769662465c84de1a934665c431279d1382b2bddc02b 0.2s done
+[stderr] #7 DONE 0.2s
+[stderr] 
+[stderr] #5 [internal] load build context
+[stderr] #5 transferring context: 3.46kB 0.1s done
+[stderr] #5 DONE 0.2s
+[stderr] 
+[stderr] #8 [build 2/6] WORKDIR /src
+[stderr] #8 CACHED
+[stderr] 
+[stderr] #9 [build 3/6] COPY DevOpsWebApi.csproj .
+[stderr] #9 CACHED
+[stderr] 
+[stderr] #10 [build 4/6] RUN dotnet restore
+[stderr] #10 CACHED
+[stderr] 
+[stderr] #11 [build 5/6] COPY . .
+[stderr] #11 DONE 0.2s
+[stderr] 
+[stderr] #12 [build 6/6] RUN dotnet publish -c Release -o /app/publish --no-restore
+[stderr] #12 7.026   DevOpsWebApi -> /src/bin/Release/net10.0/DevOpsWebApi.dll
+[stderr] #12 7.083   DevOpsWebApi -> /app/publish/
+[stderr] #12 DONE 7.2s
+[stderr] 
+[stderr] #13 [runtime 2/3] WORKDIR /app
+[stderr] #13 CACHED
+[stderr] 
+[stderr] #14 [runtime 3/3] COPY --from=build /app/publish .
+[stderr] #14 CACHED
+[stderr] 
+[stderr] #15 exporting to image
+[stderr] #15 exporting layers done
+[stderr] #15 exporting manifest sha256:00c73b5ce555baa8d319820461968d67d8b455a7825e75ada63e07990a705574 0.0s done
+[stderr] #15 exporting config sha256:1757981d9e077056575430f94cea75365c1d4c1cd6987488cbce656ed88a0465 0.0s done
+[stderr] #15 exporting attestation manifest sha256:858afa679e60818ffe90cde99b9bb0bcc28908b2b23f6b55f385c563022950c0
+[stderr] #15 exporting attestation manifest sha256:858afa679e60818ffe90cde99b9bb0bcc28908b2b23f6b55f385c563022950c0 0.1s done
+[stderr] #15 exporting manifest list sha256:32e9d354120331ac442a5e6ae20851ce628bdcd8111e4e49f94e3ac49b2e2cd4 0.0s done
+[stderr] #15 naming to docker.io/library/devops-webapi:1.0.0 done
+[stderr] #15 unpacking to docker.io/library/devops-webapi:1.0.0 0.1s done
+[stderr] #15 DONE 0.3s
+[stderr] 
+[stderr] View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ykfe87spbbjre93et4x65wxm4
+[exit=0, duracao=12s]
+[2026-10-28 09:50:23] > C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}} {{.ID}} {{.Size}}
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}} {{.ID}} {{.Size}}
+devops-webapi:1.0.0 32e9d3541203 342MB
+[exit=0, duracao=0s]
+[2026-10-28 09:50:23] INICIANDO ETAPA 10/22: Rodar, testar, inspecionar, parar e remover primeiro container
+[2026-10-28 09:50:23] > C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8080:8080 -e APP_ENVIRONMENT=development -e APP_VERSION=1.0.0 devops-webapi:1.0.0
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8080:8080 -e APP_ENVIRONMENT=development -e APP_VERSION=1.0.0 devops-webapi:1.0.0
+6f14e7fab73f935330487c547268114a9fe627898ae09a8d5a365b388cf0be56
+[exit=0, duracao=1s]
+[2026-10-28 09:50:24] Aguardando HTTP 200 de http://127.0.0.1:8080/ (ate 30 tentativas)
+[2026-10-28 09:50:25] HTTP 200 <- http://127.0.0.1:8080/
+GET http://127.0.0.1:8080/
+HTTP 200 (esperado 200)
+{"application":"DevOps Web API","version":"1.0.0","environment":"development"}
+[2026-10-28 09:50:25] Aguardando HTTP 200 de http://127.0.0.1:8080/health (ate 30 tentativas)
+[2026-10-28 09:50:25] HTTP 200 <- http://127.0.0.1:8080/health
+GET http://127.0.0.1:8080/health
+HTTP 200 (esperado 200)
+{"status":"healthy","version":"1.0.0","environment":"development","timestamp":"2026-10-28T12:50:25.5400363Z"}
+[2026-10-28 09:50:25] > C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8080/health
+> C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8080/health
+{"status":"healthy","version":"1.0.0","environment":"development","timestamp":"2026-10-28T12:50:25.6719955Z"}
+[exit=0, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}}
+devops-api|devops-webapi:1.0.0|Up 2 seconds|127.0.0.1:8080->8080/tcp
+[exit=0, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}}
+devops-webapi:1.0.0|32e9d3541203|342MB
+[exit=0, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+[2026-10-28 09:50:29] MARCO REGISTRADO: 01-api-versao-1.0.0 | C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\marcos\01-api-versao-1.0.0
+[2026-10-28 09:50:29] > C:\Program Files\Docker\Docker\resources\bin\docker.exe ps --filter name=devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps --filter name=devops-api
+CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS         PORTS                      NAMES
+6f14e7fab73f   devops-webapi:1.0.0   "dotnet DevOpsWebApi…"   6 seconds ago   Up 5 seconds   127.0.0.1:8080->8080/tcp   devops-api
+[exit=0, duracao=1s]
+[2026-10-28 09:50:29] > C:\Program Files\Docker\Docker\resources\bin\docker.exe logs devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe logs devops-api
+warn: Microsoft.AspNetCore.Hosting.Diagnostics[15]
+      Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://+:8080'.
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://[::]:8080
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /app
+[exit=0, duracao=2s]
+[2026-10-28 09:50:31] > C:\Program Files\Docker\Docker\resources\bin\docker.exe inspect -f {{.Name}} | {{.Config.Image}} | {{.State.Status}} | {{.NetworkSettings.Ports}} devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe inspect -f {{.Name}} | {{.Config.Image}} | {{.State.Status}} | {{.NetworkSettings.Ports}} devops-api
+/devops-api | devops-webapi:1.0.0 | running | map[8080/tcp:[{127.0.0.1 8080}]]
+[exit=0, duracao=0s]
+[2026-10-28 09:50:32] > C:\Program Files\Docker\Docker\resources\bin\docker.exe stop devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe stop devops-api
+devops-api
+[exit=0, duracao=1s]
+[2026-10-28 09:50:33] > C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter name=devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter name=devops-api
+CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS                    PORTS     NAMES
+6f14e7fab73f   devops-webapi:1.0.0   "dotnet DevOpsWebApi…"   10 seconds ago   Exited (0) 1 second ago             devops-api
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api
+{"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+[2026-10-28 09:50:34] > C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api
+devops-api
+[exit=0, duracao=0s]
+[2026-10-28 09:50:34] INICIANDO ETAPA 11/22: Implantar 1.0.0 em staging e production
+[2026-10-28 09:50:34] > C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-staging --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8081:8080 -e APP_ENVIRONMENT=staging -e APP_VERSION=1.0.0 devops-webapi:1.0.0
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-staging --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8081:8080 -e APP_ENVIRONMENT=staging -e APP_VERSION=1.0.0 devops-webapi:1.0.0
+81d1aa9bbf3ac2fd51894a5265e8db5894c0704df886f2599696a2682862d21b
+[exit=0, duracao=1s]
+[2026-10-28 09:50:35] > C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-prod --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8082:8080 -e APP_ENVIRONMENT=production -e APP_VERSION=1.0.0 devops-webapi:1.0.0
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-prod --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8082:8080 -e APP_ENVIRONMENT=production -e APP_VERSION=1.0.0 devops-webapi:1.0.0
+1b118a965bab1f9b10e2a3312dc492a5a81060ef18920494e2b226b1ff644143
+[exit=0, duracao=1s]
+[2026-10-28 09:50:36] Aguardando HTTP 200 de http://127.0.0.1:8081/ (ate 30 tentativas)
+[2026-10-28 09:50:36] HTTP 200 <- http://127.0.0.1:8081/
+GET http://127.0.0.1:8081/
+HTTP 200 (esperado 200)
+{"application":"DevOps Web API","version":"1.0.0","environment":"staging"}
+[2026-10-28 09:50:36] Aguardando HTTP 200 de http://127.0.0.1:8082/ (ate 30 tentativas)
+[2026-10-28 09:50:37] HTTP 200 <- http://127.0.0.1:8082/
+GET http://127.0.0.1:8082/
+HTTP 200 (esperado 200)
+{"application":"DevOps Web API","version":"1.0.0","environment":"production"}
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}}
+devops-api-prod|devops-webapi:1.0.0|Up Less than a second|127.0.0.1:8082->8080/tcp
+devops-api-staging|devops-webapi:1.0.0|Up 1 second|127.0.0.1:8081->8080/tcp
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}}
+devops-webapi:1.0.0|32e9d3541203|342MB
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-staging
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-prod
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+[2026-10-28 09:50:40] MARCO REGISTRADO: 02-staging-production-1.0.0 | C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\marcos\02-staging-production-1.0.0
+[2026-10-28 09:50:40] > C:\Program Files\Docker\Docker\resources\bin\docker.exe ps --filter name=devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps --filter name=devops-api
+CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS         PORTS                      NAMES
+1b118a965bab   devops-webapi:1.0.0   "dotnet DevOpsWebApi…"   5 seconds ago   Up 4 seconds   127.0.0.1:8082->8080/tcp   devops-api-prod
+81d1aa9bbf3a   devops-webapi:1.0.0   "dotnet DevOpsWebApi…"   6 seconds ago   Up 5 seconds   127.0.0.1:8081->8080/tcp   devops-api-staging
+[exit=0, duracao=1s]
+[2026-10-28 09:50:41] INICIANDO ETAPA 12/22: Adicionar endpoint /version e testar 1.1.0 localmente
+[2026-10-28 09:50:41] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\Program.cs
+[2026-10-28 09:50:41] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\Program-v1.1.0.cs.txt
+[2026-10-28 09:50:41] > C:\Program Files\dotnet\dotnet.exe build C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\DevOpsWebApi.csproj -c Release --no-restore
+> C:\Program Files\dotnet\dotnet.exe build C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\DevOpsWebApi.csproj -c Release --no-restore
+  DevOpsWebApi -> C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\bin\Release\net10.0\DevOpsWebApi.dll
+
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:01.29
+[exit=0, duracao=3s]
+[2026-10-28 09:50:44] API local v1.1.0: PID 3680, porta 5096
+[2026-10-28 09:50:45] Aguardando HTTP 200 de http://127.0.0.1:5096/version (ate 30 tentativas)
+[2026-10-28 09:50:46] HTTP 200 <- http://127.0.0.1:5096/version
+GET http://127.0.0.1:5096/version
+HTTP 200 (esperado 200)
+{"version":"1.1.0","environment":"development","message":"Nova funcionalidade da versao 1.1"}
+[2026-10-28 09:50:46] INICIANDO ETAPA 13/22: Construir imagem 1.1.0 sem descartar 1.0.0
+[2026-10-28 09:50:46] > C:\Program Files\Docker\Docker\resources\bin\docker.exe build -t devops-webapi:1.1.0 C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe build -t devops-webapi:1.1.0 C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi
+[stderr] #0 building with "desktop-linux" instance using docker driver
+[stderr] 
+[stderr] #1 [internal] load build definition from Dockerfile
+[stderr] #1 transferring dockerfile: 461B done
+[stderr] #1 DONE 0.0s
+[stderr] 
+[stderr] #2 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+[stderr] #2 ...
+[stderr] 
+[stderr] #3 [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+[stderr] #3 DONE 0.3s
+[stderr] 
+[stderr] #2 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+[stderr] #2 DONE 0.3s
+[stderr] 
+[stderr] #4 [internal] load .dockerignore
+[stderr] #4 transferring context: 113B done
+[stderr] #4 DONE 0.0s
+[stderr] 
+[stderr] #5 [runtime 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:de0ee358cdd672f7017a003bed21e9ac9ed48a27c922a59b18175b6e82fa7fee
+[stderr] #5 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:de0ee358cdd672f7017a003bed21e9ac9ed48a27c922a59b18175b6e82fa7fee 0.0s done
+[stderr] #5 DONE 0.0s
+[stderr] 
+[stderr] #6 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:de4fe90a98845d75910b9769662465c84de1a934665c431279d1382b2bddc02b
+[stderr] #6 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:de4fe90a98845d75910b9769662465c84de1a934665c431279d1382b2bddc02b 0.0s done
+[stderr] #6 DONE 0.1s
+[stderr] 
+[stderr] #7 [internal] load build context
+[stderr] #7 transferring context: 1.55kB done
+[stderr] #7 DONE 0.0s
+[stderr] 
+[stderr] #8 [build 3/6] COPY DevOpsWebApi.csproj .
+[stderr] #8 CACHED
+[stderr] 
+[stderr] #9 [build 2/6] WORKDIR /src
+[stderr] #9 CACHED
+[stderr] 
+[stderr] #10 [build 4/6] RUN dotnet restore
+[stderr] #10 CACHED
+[stderr] 
+[stderr] #11 [build 5/6] COPY . .
+[stderr] #11 DONE 0.0s
+[stderr] 
+[stderr] #12 [build 6/6] RUN dotnet publish -c Release -o /app/publish --no-restore
+[stderr] #12 4.795   DevOpsWebApi -> /src/bin/Release/net10.0/DevOpsWebApi.dll
+[stderr] #12 4.950   DevOpsWebApi -> /app/publish/
+[stderr] #12 DONE 5.1s
+[stderr] 
+[stderr] #13 [runtime 2/3] WORKDIR /app
+[stderr] #13 CACHED
+[stderr] 
+[stderr] #14 [runtime 3/3] COPY --from=build /app/publish .
+[stderr] #14 CACHED
+[stderr] 
+[stderr] #15 exporting to image
+[stderr] #15 exporting layers done
+[stderr] #15 exporting manifest sha256:46a60540b55e1009c4aec232c3098620eac021360132afa55945896d93dc170f done
+[stderr] #15 exporting config sha256:6f45a8cce0299c0a72704df64f3d174c591902eee0f63b17fc45f0e301143582 done
+[stderr] #15 exporting attestation manifest sha256:86a7a2baa2b63c1248bdf6b3af83f701988ec57d0602a402e43c067fab8f6286 0.1s done
+[stderr] #15 exporting manifest list sha256:cf4728fe3520f226c9199d4522be487520cdc7087818a6867506f462d1acb6f3
+[stderr] #15 exporting manifest list sha256:cf4728fe3520f226c9199d4522be487520cdc7087818a6867506f462d1acb6f3 0.1s done
+[stderr] #15 naming to docker.io/library/devops-webapi:1.1.0
+[stderr] #15 naming to docker.io/library/devops-webapi:1.1.0 0.0s done
+[stderr] #15 unpacking to docker.io/library/devops-webapi:1.1.0 0.1s done
+[stderr] #15 DONE 0.4s
+[stderr] 
+[stderr] View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/urj4yw594vxi1jzzwwkb30tc0
+[exit=0, duracao=11s]
+[2026-10-28 09:50:57] > C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}} {{.ID}} {{.Size}}
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}} {{.ID}} {{.Size}}
+devops-webapi:1.1.0 cf4728fe3520 342MB
+devops-webapi:1.0.0 32e9d3541203 342MB
+[exit=0, duracao=1s]
+[2026-10-28 09:50:58] INICIANDO ETAPA 14/22: Promover a versao 1.1.0 para staging e validar gate
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api-staging
+{"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+[2026-10-28 09:50:58] > C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-staging
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-staging
+devops-api-staging
+[exit=0, duracao=1s]
+[2026-10-28 09:50:59] > C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-staging --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8081:8080 -e APP_ENVIRONMENT=staging -e APP_VERSION=1.1.0 devops-webapi:1.1.0
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-staging --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8081:8080 -e APP_ENVIRONMENT=staging -e APP_VERSION=1.1.0 devops-webapi:1.1.0
+0500806e4eca1a2c6a7f1c7414b73dfd493fbb1717ad29fcb501059600704e24
+[exit=0, duracao=1s]
+[2026-10-28 09:51:00] Aguardando HTTP 200 de http://127.0.0.1:8081/health (ate 30 tentativas)
+[2026-10-28 09:51:00] HTTP 200 <- http://127.0.0.1:8081/health
+GET http://127.0.0.1:8081/health
+HTTP 200 (esperado 200)
+{"status":"healthy","version":"1.1.0","environment":"staging","timestamp":"2026-10-28T12:51:00.4084463Z"}
+[2026-10-28 09:51:00] Aguardando HTTP 200 de http://127.0.0.1:8081/version (ate 30 tentativas)
+[2026-10-28 09:51:00] HTTP 200 <- http://127.0.0.1:8081/version
+GET http://127.0.0.1:8081/version
+HTTP 200 (esperado 200)
+{"version":"1.1.0","environment":"staging","message":"Nova funcionalidade da versao 1.1"}
+[2026-10-28 09:51:00] > C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8081/health
+> C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8081/health
+{"status":"healthy","version":"1.1.0","environment":"staging","timestamp":"2026-10-28T12:51:00.6611255Z"}
+[exit=0, duracao=0s]
+[2026-10-28 09:51:01] Aguardando HTTP 200 de http://127.0.0.1:8082/health (ate 30 tentativas)
+[2026-10-28 09:51:01] HTTP 200 <- http://127.0.0.1:8082/health
+GET http://127.0.0.1:8082/health
+HTTP 200 (esperado 200)
+{"status":"healthy","version":"1.0.0","environment":"production","timestamp":"2026-10-28T12:51:01.0471641Z"}
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}}
+devops-api-staging|devops-webapi:1.1.0|Up 1 second|127.0.0.1:8081->8080/tcp
+devops-api-prod|devops-webapi:1.0.0|Up 24 seconds|127.0.0.1:8082->8080/tcp
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}}
+devops-webapi:1.1.0|cf4728fe3520|342MB
+devops-webapi:1.0.0|32e9d3541203|342MB
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-staging
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-prod
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+[2026-10-28 09:51:04] MARCO REGISTRADO: 03-staging-1.1.0-production-1.0.0 | C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\marcos\03-staging-1.1.0-production-1.0.0
+[2026-10-28 09:51:05] INICIANDO ETAPA 15/22: Promover imagem validada 1.1.0 para production
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api-prod
+{"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+[2026-10-28 09:51:05] > C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-prod
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-prod
+devops-api-prod
+[exit=0, duracao=1s]
+[2026-10-28 09:51:06] > C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-prod --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8082:8080 -e APP_ENVIRONMENT=production -e APP_VERSION=1.1.0 devops-webapi:1.1.0
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-prod --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8082:8080 -e APP_ENVIRONMENT=production -e APP_VERSION=1.1.0 devops-webapi:1.1.0
+bf4952a4e444d599a0f7f64e62f4f101a257f35777df013a1025149c45a98bd5
+[exit=0, duracao=1s]
+[2026-10-28 09:51:07] Aguardando HTTP 200 de http://127.0.0.1:8082/health (ate 30 tentativas)
+[2026-10-28 09:51:07] HTTP 200 <- http://127.0.0.1:8082/health
+GET http://127.0.0.1:8082/health
+HTTP 200 (esperado 200)
+{"status":"healthy","version":"1.1.0","environment":"production","timestamp":"2026-10-28T12:51:07.1660912Z"}
+[2026-10-28 09:51:07] Aguardando HTTP 200 de http://127.0.0.1:8082/version (ate 30 tentativas)
+[2026-10-28 09:51:07] HTTP 200 <- http://127.0.0.1:8082/version
+GET http://127.0.0.1:8082/version
+HTTP 200 (esperado 200)
+{"version":"1.1.0","environment":"production","message":"Nova funcionalidade da versao 1.1"}
+[2026-10-28 09:51:07] > C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8082/health
+> C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8082/health
+{"status":"healthy","version":"1.1.0","environment":"production","timestamp":"2026-10-28T12:51:07.3995984Z"}
+[exit=0, duracao=0s]
+[2026-10-28 09:51:07] > C:\Program Files\Docker\Docker\resources\bin\docker.exe ps --filter name=devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps --filter name=devops-api
+CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS         PORTS                      NAMES
+bf4952a4e444   devops-webapi:1.1.0   "dotnet DevOpsWebApi…"   1 second ago    Up 1 second    127.0.0.1:8082->8080/tcp   devops-api-prod
+0500806e4eca   devops-webapi:1.1.0   "dotnet DevOpsWebApi…"   8 seconds ago   Up 8 seconds   127.0.0.1:8081->8080/tcp   devops-api-staging
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}}
+devops-api-prod|devops-webapi:1.1.0|Up 2 seconds|127.0.0.1:8082->8080/tcp
+devops-api-staging|devops-webapi:1.1.0|Up 8 seconds|127.0.0.1:8081->8080/tcp
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}}
+devops-webapi:1.1.0|cf4728fe3520|342MB
+devops-webapi:1.0.0|32e9d3541203|342MB
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-staging
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-prod
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+[2026-10-28 09:51:12] MARCO REGISTRADO: 04-staging-production-1.1.0 | C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\marcos\04-staging-production-1.1.0
+[2026-10-28 09:51:12] INICIANDO ETAPA 16/22: Criar imagem 1.2.0 com HTTP 500 proposital
+[2026-10-28 09:51:12] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\Program.cs
+[2026-10-28 09:51:12] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\Program-v1.2.0.cs.txt
+[2026-10-28 09:51:12] > C:\Program Files\Docker\Docker\resources\bin\docker.exe build -t devops-webapi:1.2.0 C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe build -t devops-webapi:1.2.0 C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi
+[stderr] #0 building with "desktop-linux" instance using docker driver
+[stderr] 
+[stderr] #1 [internal] load build definition from Dockerfile
+[stderr] #1 transferring dockerfile: 461B 0.0s done
+[stderr] #1 DONE 0.0s
+[stderr] 
+[stderr] #2 [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+[stderr] #2 DONE 0.2s
+[stderr] 
+[stderr] #3 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+[stderr] #3 DONE 0.2s
+[stderr] 
+[stderr] #4 [internal] load .dockerignore
+[stderr] #4 transferring context: 113B 0.0s done
+[stderr] #4 DONE 0.0s
+[stderr] 
+[stderr] #5 [internal] load build context
+[stderr] #5 DONE 0.0s
+[stderr] 
+[stderr] #6 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:de4fe90a98845d75910b9769662465c84de1a934665c431279d1382b2bddc02b
+[stderr] #6 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:de4fe90a98845d75910b9769662465c84de1a934665c431279d1382b2bddc02b
+[stderr] #6 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:de4fe90a98845d75910b9769662465c84de1a934665c431279d1382b2bddc02b 0.1s done
+[stderr] #6 DONE 0.2s
+[stderr] 
+[stderr] #7 [runtime 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:de0ee358cdd672f7017a003bed21e9ac9ed48a27c922a59b18175b6e82fa7fee
+[stderr] #7 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:de0ee358cdd672f7017a003bed21e9ac9ed48a27c922a59b18175b6e82fa7fee 0.2s done
+[stderr] #7 DONE 0.2s
+[stderr] 
+[stderr] #5 [internal] load build context
+[stderr] #5 transferring context: 1.51kB 0.0s done
+[stderr] #5 DONE 0.0s
+[stderr] 
+[stderr] #8 [build 2/6] WORKDIR /src
+[stderr] #8 CACHED
+[stderr] 
+[stderr] #9 [build 3/6] COPY DevOpsWebApi.csproj .
+[stderr] #9 CACHED
+[stderr] 
+[stderr] #10 [build 4/6] RUN dotnet restore
+[stderr] #10 CACHED
+[stderr] 
+[stderr] #11 [build 5/6] COPY . .
+[stderr] #11 DONE 0.1s
+[stderr] 
+[stderr] #12 [build 6/6] RUN dotnet publish -c Release -o /app/publish --no-restore
+[stderr] #12 4.854   DevOpsWebApi -> /src/bin/Release/net10.0/DevOpsWebApi.dll
+[stderr] #12 4.912   DevOpsWebApi -> /app/publish/
+[stderr] #12 DONE 5.0s
+[stderr] 
+[stderr] #13 [runtime 2/3] WORKDIR /app
+[stderr] #13 CACHED
+[stderr] 
+[stderr] #14 [runtime 3/3] COPY --from=build /app/publish .
+[stderr] #14 CACHED
+[stderr] 
+[stderr] #15 exporting to image
+[stderr] #15 exporting layers done
+[stderr] #15 exporting manifest sha256:f72667da69ebae68e4d2fd812dca2b26582a8df0672816caaa8362ad7cdb9190 0.0s done
+[stderr] #15 exporting config sha256:1d3a9877c2ebbd0581c48cfaca42ca9fba52ba5233547b031051b3d88e099c1b done
+[stderr] #15 exporting attestation manifest sha256:b9375b965d22932059ea29ea840f53ff5b9170696551a76024d838e291188ba7
+[stderr] #15 exporting attestation manifest sha256:b9375b965d22932059ea29ea840f53ff5b9170696551a76024d838e291188ba7 0.1s done
+[stderr] #15 exporting manifest list sha256:c259cbb5f56626db3c38d82d03f012ca43afd6f54b6b4202fd15ee436b4b7dc6 0.0s done
+[stderr] #15 naming to docker.io/library/devops-webapi:1.2.0 done
+[stderr] #15 unpacking to docker.io/library/devops-webapi:1.2.0 0.0s done
+[stderr] #15 DONE 0.2s
+[stderr] 
+[stderr] View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/qanklxph00w1rlwbcu7j1gqei
+[exit=0, duracao=11s]
+[2026-10-28 09:51:23] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\Program.cs
+[2026-10-28 09:51:23] > C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}} {{.ID}} {{.Size}}
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}} {{.ID}} {{.Size}}
+devops-webapi:1.2.0 c259cbb5f566 342MB
+devops-webapi:1.1.0 cf4728fe3520 342MB
+devops-webapi:1.0.0 32e9d3541203 342MB
+[exit=0, duracao=1s]
+[2026-10-28 09:51:24] INICIANDO ETAPA 17/22: Testar 1.2.0 em staging e BLOQUEAR promocao normal
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api-staging
+{"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+[2026-10-28 09:51:24] > C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-staging
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-staging
+devops-api-staging
+[exit=0, duracao=1s]
+[2026-10-28 09:51:25] > C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-staging --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8081:8080 -e APP_ENVIRONMENT=staging -e APP_VERSION=1.2.0 devops-webapi:1.2.0
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-staging --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8081:8080 -e APP_ENVIRONMENT=staging -e APP_VERSION=1.2.0 devops-webapi:1.2.0
+e38105f2f97d30135295745aad8f31f72e0c7ef316a8b959cff4a60ded3ed4e7
+[exit=0, duracao=1s]
+[2026-10-28 09:51:26] Aguardando HTTP 500 de http://127.0.0.1:8081/health (ate 30 tentativas)
+[2026-10-28 09:51:26] HTTP 500 <- http://127.0.0.1:8081/health
+GET http://127.0.0.1:8081/health
+HTTP 500 (esperado 500)
+
+Diagnostico: O servidor remoto retornou um erro: (500) Erro Interno do Servidor.
+[2026-10-28 09:51:26] > C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8081/health
+> C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8081/health
+[stderr] curl: (22) The requested URL returned error: 500
+[exit=22, duracao=0s]
+[2026-10-28 09:51:27] Aguardando HTTP 200 de http://127.0.0.1:8082/health (ate 30 tentativas)
+[2026-10-28 09:51:27] HTTP 200 <- http://127.0.0.1:8082/health
+GET http://127.0.0.1:8082/health
+HTTP 200 (esperado 200)
+{"status":"healthy","version":"1.1.0","environment":"production","timestamp":"2026-10-28T12:51:27.0840872Z"}
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}}
+devops-api-staging|devops-webapi:1.2.0|Up 1 second|127.0.0.1:8081->8080/tcp
+devops-api-prod|devops-webapi:1.1.0|Up 20 seconds|127.0.0.1:8082->8080/tcp
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}}
+devops-webapi:1.2.0|c259cbb5f566|342MB
+devops-webapi:1.1.0|cf4728fe3520|342MB
+devops-webapi:1.0.0|32e9d3541203|342MB
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-staging
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-prod
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+[2026-10-28 09:51:30] MARCO REGISTRADO: 05-rejeicao-staging-1.2.0-http-500 | C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\marcos\05-rejeicao-staging-1.2.0-http-500
+[2026-10-28 09:51:30] INICIANDO ETAPA 18/22: Simular incidente APENAS em production local de laboratorio
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api-prod
+{"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+[2026-10-28 09:51:31] > C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-prod
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-prod
+devops-api-prod
+[exit=0, duracao=1s]
+[2026-10-28 09:51:32] > C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-prod --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8082:8080 -e APP_ENVIRONMENT=production -e APP_VERSION=1.2.0 devops-webapi:1.2.0
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-prod --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8082:8080 -e APP_ENVIRONMENT=production -e APP_VERSION=1.2.0 devops-webapi:1.2.0
+d74454d01dc3421411568da3bc80b1b5b43a0ed1c5689bebe1bc0b0d2acad56c
+[exit=0, duracao=1s]
+[2026-10-28 09:51:33] Aguardando HTTP 500 de http://127.0.0.1:8082/health (ate 30 tentativas)
+[2026-10-28 09:51:34] HTTP 500 <- http://127.0.0.1:8082/health
+GET http://127.0.0.1:8082/health
+HTTP 500 (esperado 500)
+
+Diagnostico: O servidor remoto retornou um erro: (500) Erro Interno do Servidor.
+[2026-10-28 09:51:34] > C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8082/health
+> C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8082/health
+[stderr] curl: (22) The requested URL returned error: 500
+[exit=22, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}}
+devops-api-prod|devops-webapi:1.2.0|Up 2 seconds|127.0.0.1:8082->8080/tcp
+devops-api-staging|devops-webapi:1.2.0|Up 9 seconds|127.0.0.1:8081->8080/tcp
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}}
+devops-webapi:1.2.0|c259cbb5f566|342MB
+devops-webapi:1.1.0|cf4728fe3520|342MB
+devops-webapi:1.0.0|32e9d3541203|342MB
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-prod
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-staging
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+[2026-10-28 09:51:38] MARCO REGISTRADO: 06-incidente-production-1.2.0-http-500 | C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\marcos\06-incidente-production-1.2.0-http-500
+[2026-10-28 09:51:38] INICIANDO ETAPA 19/22: Executar rollback de production para 1.1.0
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api-prod
+{"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+[2026-10-28 09:51:39] > C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-prod
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-prod
+devops-api-prod
+[exit=0, duracao=1s]
+[2026-10-28 09:51:40] > C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-prod --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8082:8080 -e APP_ENVIRONMENT=production -e APP_VERSION=1.1.0 devops-webapi:1.1.0
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe run -d --name devops-api-prod --label ceub.devops.lab=ceub-devops-unidade3 -p 127.0.0.1:8082:8080 -e APP_ENVIRONMENT=production -e APP_VERSION=1.1.0 devops-webapi:1.1.0
+279ca5dc1e14f524905e72a7c7189a72bc14947fb3376bd93b4793684b56a300
+[exit=0, duracao=1s]
+[2026-10-28 09:51:41] Aguardando HTTP 200 de http://127.0.0.1:8082/health (ate 30 tentativas)
+[2026-10-28 09:51:42] HTTP 200 <- http://127.0.0.1:8082/health
+GET http://127.0.0.1:8082/health
+HTTP 200 (esperado 200)
+{"status":"healthy","version":"1.1.0","environment":"production","timestamp":"2026-10-28T12:51:42.3233103Z"}
+[2026-10-28 09:51:42] > C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8082/health
+> C:\WINDOWS\system32\curl.exe -f -sS http://127.0.0.1:8082/health
+{"status":"healthy","version":"1.1.0","environment":"production","timestamp":"2026-10-28T12:51:42.4453044Z"}
+[exit=0, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}}
+devops-api-prod|devops-webapi:1.1.0|Up 2 seconds|127.0.0.1:8082->8080/tcp
+devops-api-staging|devops-webapi:1.2.0|Up 17 seconds|127.0.0.1:8081->8080/tcp
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}}
+devops-webapi:1.2.0|c259cbb5f566|342MB
+devops-webapi:1.1.0|cf4728fe3520|342MB
+devops-webapi:1.0.0|32e9d3541203|342MB
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-prod
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-staging
+
+[stderr] template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+[exit=1, duracao=0s]
+[2026-10-28 09:51:46] MARCO REGISTRADO: 07-rollback-production-1.1.0-http-200 | C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\marcos\07-rollback-production-1.1.0-http-200
+[2026-10-28 09:51:46] > C:\Program Files\Docker\Docker\resources\bin\docker.exe ps --filter name=devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps --filter name=devops-api
+CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS          PORTS                      NAMES
+279ca5dc1e14   devops-webapi:1.1.0   "dotnet DevOpsWebApi…"   6 seconds ago    Up 6 seconds    127.0.0.1:8082->8080/tcp   devops-api-prod
+e38105f2f97d   devops-webapi:1.2.0   "dotnet DevOpsWebApi…"   21 seconds ago   Up 20 seconds   127.0.0.1:8081->8080/tcp   devops-api-staging
+[exit=0, duracao=1s]
+[2026-10-28 09:51:47] INICIANDO ETAPA 20/22: Criar compose.yaml com healthcheck sem curl
+[2026-10-28 09:51:47] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\compose.yaml
+[2026-10-28 09:51:47] > C:\Program Files\Docker\Docker\resources\bin\docker.exe compose -f C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\compose.yaml config
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe compose -f C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\compose.yaml config
+name: ceub-devops-unidade3
+services:
+  production:
+    container_name: devops-api-prod
+    environment:
+      APP_ENVIRONMENT: production
+      APP_VERSION: 1.1.0
+    healthcheck:
+      test:
+        - CMD
+        - dotnet
+        - DevOpsWebApi.dll
+        - --health-check
+      timeout: 5s
+      interval: 5s
+      retries: 4
+      start_period: 5s
+    image: devops-webapi:1.1.0
+    labels:
+      ceub.devops.lab: ceub-devops-unidade3
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 8080
+        published: "8082"
+        protocol: tcp
+  staging:
+    container_name: devops-api-staging
+    environment:
+      APP_ENVIRONMENT: staging
+      APP_VERSION: 1.1.0
+    healthcheck:
+      test:
+        - CMD
+        - dotnet
+        - DevOpsWebApi.dll
+        - --health-check
+      timeout: 5s
+      interval: 5s
+      retries: 4
+      start_period: 5s
+    image: devops-webapi:1.1.0
+    labels:
+      ceub.devops.lab: ceub-devops-unidade3
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 8080
+        published: "8081"
+        protocol: tcp
+networks:
+  default:
+    name: ceub-devops-unidade3_default
+[exit=0, duracao=9s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api-staging
+{"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+[2026-10-28 09:51:56] > C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-staging
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-staging
+devops-api-staging
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{json .Config.Labels}} devops-api-prod
+{"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+[2026-10-28 09:51:57] > C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-prod
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe rm -f devops-api-prod
+devops-api-prod
+[exit=0, duracao=1s]
+[2026-10-28 09:51:58] > C:\Program Files\Docker\Docker\resources\bin\docker.exe compose -f C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\compose.yaml up -d
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe compose -f C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\compose.yaml up -d
+[stderr]  Network ceub-devops-unidade3_default Creating 
+[stderr]  Network ceub-devops-unidade3_default Created 
+[stderr]  Container devops-api-prod Creating 
+[stderr]  Container devops-api-staging Creating 
+[stderr]  Container devops-api-staging Created 
+[stderr]  Container devops-api-prod Created 
+[stderr]  Container devops-api-prod Starting 
+[stderr]  Container devops-api-staging Starting 
+[stderr]  Container devops-api-prod Started 
+[stderr]  Container devops-api-staging Started 
+[exit=0, duracao=2s]
+[2026-10-28 09:52:00] > C:\Program Files\Docker\Docker\resources\bin\docker.exe compose -f C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\compose.yaml ps
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe compose -f C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\compose.yaml ps
+NAME                 IMAGE                 COMMAND                  SERVICE      CREATED        STATUS                           PORTS
+devops-api-prod      devops-webapi:1.1.0   "dotnet DevOpsWebApi…"   production   1 second ago   Up 1 second (health: starting)   127.0.0.1:8082->8080/tcp
+devops-api-staging   devops-webapi:1.1.0   "dotnet DevOpsWebApi…"   staging      1 second ago   Up 1 second (health: starting)   127.0.0.1:8081->8080/tcp
+[exit=0, duracao=1s]
+[2026-10-28 09:52:01] Aguardando HTTP 200 de http://127.0.0.1:8081/health (ate 30 tentativas)
+[2026-10-28 09:52:01] HTTP 200 <- http://127.0.0.1:8081/health
+GET http://127.0.0.1:8081/health
+HTTP 200 (esperado 200)
+{"status":"healthy","version":"1.1.0","environment":"staging","timestamp":"2026-10-28T12:52:01.648063Z"}
+[2026-10-28 09:52:01] Aguardando HTTP 200 de http://127.0.0.1:8082/health (ate 30 tentativas)
+[2026-10-28 09:52:01] HTTP 200 <- http://127.0.0.1:8082/health
+GET http://127.0.0.1:8082/health
+HTTP 200 (esperado 200)
+{"status":"healthy","version":"1.1.0","environment":"production","timestamp":"2026-10-28T12:52:01.8202841Z"}
+[2026-10-28 09:52:01] > C:\Program Files\Docker\Docker\resources\bin\docker.exe compose -f C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\compose.yaml logs --tail 35
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe compose -f C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\compose.yaml logs --tail 35
+devops-api-staging  | warn: Microsoft.AspNetCore.Hosting.Diagnostics[15]
+devops-api-staging  |       Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://+:8080'.
+devops-api-staging  | info: Microsoft.Hosting.Lifetime[14]
+devops-api-staging  |       Now listening on: http://[::]:8080
+devops-api-staging  | info: Microsoft.Hosting.Lifetime[0]
+devops-api-staging  |       Application started. Press Ctrl+C to shut down.
+devops-api-staging  | info: Microsoft.Hosting.Lifetime[0]
+devops-api-staging  |       Hosting environment: Production
+devops-api-staging  | info: Microsoft.Hosting.Lifetime[0]
+devops-api-staging  |       Content root path: /app
+devops-api-prod     | warn: Microsoft.AspNetCore.Hosting.Diagnostics[15]
+devops-api-prod     |       Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://+:8080'.
+devops-api-prod     | info: Microsoft.Hosting.Lifetime[14]
+devops-api-prod     |       Now listening on: http://[::]:8080
+devops-api-prod     | info: Microsoft.Hosting.Lifetime[0]
+devops-api-prod     |       Application started. Press Ctrl+C to shut down.
+devops-api-prod     | info: Microsoft.Hosting.Lifetime[0]
+devops-api-prod     |       Hosting environment: Production
+devops-api-prod     | info: Microsoft.Hosting.Lifetime[0]
+devops-api-prod     |       Content root path: /app
+[exit=0, duracao=3s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe inspect -f {{.State.Health.Status}} devops-api-staging
+healthy
+[exit=0, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe inspect -f {{.State.Health.Status}} devops-api-prod
+healthy
+[exit=0, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}}
+devops-api-prod|devops-webapi:1.1.0|Up 6 seconds (healthy)|127.0.0.1:8082->8080/tcp
+devops-api-staging|devops-webapi:1.1.0|Up 6 seconds (healthy)|127.0.0.1:8081->8080/tcp
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}}
+devops-webapi:1.2.0|c259cbb5f566|342MB
+devops-webapi:1.1.0|cf4728fe3520|342MB
+devops-webapi:1.0.0|32e9d3541203|342MB
+[exit=0, duracao=1s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-staging
+7684163fcc7988bdf505f0ff0ead22fe2d2621049c3167678716eedaa49d6d23|devops-webapi:1.1.0|running|healthy|{"ceub.devops.lab":"ceub-devops-unidade3","com.docker.compose.config-hash":"71add6fdd655a4e79a3573e45aa9be7aa23ec8fdf9f7e972cf7a272e9badfdcf","com.docker.compose.container-number":"1","com.docker.compose.depends_on":"","com.docker.compose.image":"sha256:cf4728fe3520f226c9199d4522be487520cdc7087818a6867506f462d1acb6f3","com.docker.compose.oneoff":"False","com.docker.compose.project":"ceub-devops-unidade3","com.docker.compose.project.config_files":"C:\\Users\\whiteracoon621\\Documents\\CEUB\\DevOps-Unidade3\\Reexecucoes\\Reexecucao-20261028-094943\\DevOpsWebApi\\compose.yaml","com.docker.compose.project.working_dir":"C:\\Users\\whiteracoon621\\Documents\\CEUB\\DevOps-Unidade3\\Reexecucoes\\Reexecucao-20261028-094943\\DevOpsWebApi","com.docker.compose.service":"staging","com.docker.compose.version":"5.1.3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe logs --tail 25 devops-api-staging
+warn: Microsoft.AspNetCore.Hosting.Diagnostics[15]
+      Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://+:8080'.
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://[::]:8080
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /app
+[exit=0, duracao=2s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe container inspect -f {{.Id}}|{{.Config.Image}}|{{.State.Status}}|{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}|{{json .Config.Labels}} devops-api-prod
+e86d37b752364512ed37df9b0f9c0c63e923f016e68e080d304ac79d1f5eb845|devops-webapi:1.1.0|running|healthy|{"ceub.devops.lab":"ceub-devops-unidade3","com.docker.compose.config-hash":"a4dd901b81b502ab83d6a767885d97d115e7eda6d9f558aa1190eb10a4ab7e1b","com.docker.compose.container-number":"1","com.docker.compose.depends_on":"","com.docker.compose.image":"sha256:cf4728fe3520f226c9199d4522be487520cdc7087818a6867506f462d1acb6f3","com.docker.compose.oneoff":"False","com.docker.compose.project":"ceub-devops-unidade3","com.docker.compose.project.config_files":"C:\\Users\\whiteracoon621\\Documents\\CEUB\\DevOps-Unidade3\\Reexecucoes\\Reexecucao-20261028-094943\\DevOpsWebApi\\compose.yaml","com.docker.compose.project.working_dir":"C:\\Users\\whiteracoon621\\Documents\\CEUB\\DevOps-Unidade3\\Reexecucoes\\Reexecucao-20261028-094943\\DevOpsWebApi","com.docker.compose.service":"production","com.docker.compose.version":"5.1.3","org.opencontainers.image.version":"24.04"}
+[exit=0, duracao=0s]
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe logs --tail 25 devops-api-prod
+warn: Microsoft.AspNetCore.Hosting.Diagnostics[15]
+      Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://+:8080'.
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://[::]:8080
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /app
+[exit=0, duracao=2s]
+[2026-10-28 09:52:13] MARCO REGISTRADO: 08-compose-healthy-staging-production | C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\marcos\08-compose-healthy-staging-production
+[2026-10-28 09:52:13] INICIANDO ETAPA 21/22: Criar README, registrar evidencias e efetuar limpeza controlada
+[2026-10-28 09:52:13] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\README.md
+[2026-10-28 09:52:13] Opcao -KeepRunning: ambientes permanecem no Docker Compose.
+[2026-10-28 09:52:13] > C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter name=devops-api
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe ps -a --filter name=devops-api
+CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS                    PORTS                      NAMES
+e86d37b75236   devops-webapi:1.1.0   "dotnet DevOpsWebApi…"   14 seconds ago   Up 14 seconds (healthy)   127.0.0.1:8082->8080/tcp   devops-api-prod
+7684163fcc79   devops-webapi:1.1.0   "dotnet DevOpsWebApi…"   14 seconds ago   Up 14 seconds (healthy)   127.0.0.1:8081->8080/tcp   devops-api-staging
+[exit=0, duracao=1s]
+[2026-10-28 09:52:14] > C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}} {{.ID}} {{.Size}}
+> C:\Program Files\Docker\Docker\resources\bin\docker.exe image ls devops-webapi --format {{.Repository}}:{{.Tag}} {{.ID}} {{.Size}}
+devops-webapi:1.2.0 c259cbb5f566 342MB
+devops-webapi:1.1.0 cf4728fe3520 342MB
+devops-webapi:1.0.0 32e9d3541203 342MB
+[exit=0, duracao=1s]
+[2026-10-28 09:52:15] Organizando relatorios e arquivos de diagnostico (sem alterar etapa de falha).
+[2026-10-28 09:52:15] Arquivo salvo: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\README.md
+> C:\Program Files\Google\Chrome\Application\chrome.exe --headless --disable-gpu --no-first-run --no-default-browser-check --user-data-dir=C:\Users\WHITER~1\AppData\Local\Temp\ceub-docker-pdf-e9dac0b08b45490ea231333c140f1b89 --print-to-pdf=C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\Relatorio-Evidencias-Docker-Unidade3.pdf file:///C:/Users/whiteracoon621/Documents/CEUB/DevOps-Unidade3/Reexecucoes/Reexecucao-20261028-094943/DevOpsWebApi/evidencias/Relatorio-Evidencias-Docker-Unidade3.html
+[stderr] 239562 bytes written to file C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\Relatorio-Evidencias-Docker-Unidade3.pdf
+[exit=0, duracao=1s]
+[2026-10-28 09:52:17] PDF de evidencias criado: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi\evidencias\Relatorio-Evidencias-Docker-Unidade3.pdf
+[2026-10-28 09:52:17] > C:\Program Files\Git\cmd\git.exe --version
+> C:\Program Files\Git\cmd\git.exe --version
+git version 2.54.0.windows.1
+[exit=0, duracao=0s]
+[2026-10-28 09:52:18] > C:\Program Files\Git\cmd\git.exe -C C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi init
+> C:\Program Files\Git\cmd\git.exe -C C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi init
+Initialized empty Git repository in C:/Users/whiteracoon621/Documents/CEUB/DevOps-Unidade3/Reexecucoes/Reexecucao-20261028-094943/DevOpsWebApi/.git/
+[exit=0, duracao=0s]
+[2026-10-28 09:52:18] > C:\Program Files\Git\cmd\git.exe -C C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi symbolic-ref HEAD refs/heads/main
+> C:\Program Files\Git\cmd\git.exe -C C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi symbolic-ref HEAD refs/heads/main
+[exit=0, duracao=0s]
+> C:\Program Files\Git\cmd\git.exe -C C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943\DevOpsWebApi add .

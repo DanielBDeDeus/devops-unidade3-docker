@@ -1,0 +1,11 @@
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+.env
+*.secret
+secrets.json
+
+evidencias/

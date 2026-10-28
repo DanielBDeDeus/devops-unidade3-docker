@@ -1,0 +1,11 @@
+{
+    "status":  "FALHA",
+    "etapa":  21,
+    "total":  22,
+    "descricao":  "Criar README, registrar evidencias e efetuar limpeza controlada",
+    "atualizado":  "2026-10-28 09:52:19",
+    "tempo_decorrido_segundos":  151,
+    "comando":  "C:\\Program Files\\Git\\cmd\\git.exe -C C:\\Users\\whiteracoon621\\Documents\\CEUB\\DevOps-Unidade3\\Reexecucoes\\Reexecucao-20261028-094943\\DevOpsWebApi add .",
+    "ultima_saida":  "warning: in the working copy of \u0027evidencias/Relatorio-Evidencias-Docker-Unidade3.html\u0027, LF will be replaced by CRLF the next time Git touches it",
+    "erro":  "Falha na organizacao dos arquivos: O processo não pode acessar o arquivo \u0027C:\\Users\\whiteracoon621\\Documents\\CEUB\\DevOps-Unidade3\\Reexecucoes\\Reexecucao-20261028-094943\\DevOpsWebApi\\evidencias\\execucao-completa.txt\u0027 porque ele está sendo usado por outro processo.",
+    "projeto":  "C:\\U

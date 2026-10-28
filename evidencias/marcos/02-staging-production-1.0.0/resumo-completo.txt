@@ -1,0 +1,22 @@
+MARCO: 02-staging-production-1.0.0
+QUANDO: 2026-10-28T09:50:37.057-03:00
+ETAPA: 11/22 - Implantar 1.0.0 em staging e production
+EVIDENCIAS CAPTURADAS AO VIVO - NAO SIMULADAS
+docker ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}} ; exit=0
+devops-api-prod|devops-webapi:1.0.0|Up Less than a second|127.0.0.1:8082->8080/tcp
+devops-api-staging|devops-webapi:1.0.0|Up 1 second|127.0.0.1:8081->8080/tcp
+docker image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}} ; exit=0
+devops-webapi:1.0.0|32e9d3541203|342MB
+CONTAINER devops-api-staging ; exit=1
+
+template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+CONTAINER devops-api-prod ; exit=1
+
+template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+GET http://127.0.0.1:8081/health
+HTTP 200
+{"status":"healthy","version":"1.0.0","environment":"staging","timestamp":"2026-10-28T12:50:39.2293229Z"}
+
+GET http://127.0.0.1:8082/health
+HTTP 200
+{"status":"healthy","version":"1.0.0","environment":"production","timestamp":"2026-10-28T12:50:40.0427939Z"}

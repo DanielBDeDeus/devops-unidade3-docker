@@ -1,0 +1,24 @@
+MARCO: 07-rollback-production-1.1.0-http-200
+QUANDO: 2026-10-28T09:51:42.851-03:00
+ETAPA: 19/22 - Executar rollback de production para 1.1.0
+EVIDENCIAS CAPTURADAS AO VIVO - NAO SIMULADAS
+docker ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}} ; exit=0
+devops-api-prod|devops-webapi:1.1.0|Up 2 seconds|127.0.0.1:8082->8080/tcp
+devops-api-staging|devops-webapi:1.2.0|Up 17 seconds|127.0.0.1:8081->8080/tcp
+docker image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}} ; exit=0
+devops-webapi:1.2.0|c259cbb5f566|342MB
+devops-webapi:1.1.0|cf4728fe3520|342MB
+devops-webapi:1.0.0|32e9d3541203|342MB
+CONTAINER devops-api-prod ; exit=1
+
+template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+CONTAINER devops-api-staging ; exit=1
+
+template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+GET http://127.0.0.1:8082/health
+HTTP 200
+{"status":"healthy","version":"1.1.0","environment":"production","timestamp":"2026-10-28T12:51:45.2126048Z"}
+
+GET http://127.0.0.1:8081/health
+HTTP 500
+

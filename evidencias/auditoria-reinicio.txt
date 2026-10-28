@@ -1,0 +1,38 @@
+[2026-10-28 09:49:43] ===================================================
+[2026-10-28 09:49:43] CEUB - REFAZER TODO O LABORATORIO + GRAVAR PROVAS
+[2026-10-28 09:49:43] Arquivo de evidencias preservadas: C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3
+[2026-10-28 09:49:43] NOVA pasta (nao substitui a primeira): C:\Users\whiteracoon621\Documents\CEUB\DevOps-Unidade3\Reexecucoes\Reexecucao-20261028-094943
+[2026-10-28 09:49:43] Limpeza limitada ao laboratorio e validada por label.
+[2026-10-28 09:49:43] [1/6] Checando acesso ao Docker Engine...
+[2026-10-28 09:49:43] > docker info --format {{.ServerVersion}} => exit 0
+[2026-10-28 09:49:43]   29.5.2
+[2026-10-28 09:49:43] [2/6] Inventario e checagem da propriedade dos recursos existentes...
+[2026-10-28 09:49:43] > docker container inspect -f {{json .Config.Labels}} devops-api => exit 1
+[2026-10-28 09:49:43]   Error response from daemon: No such container: devops-api
+[2026-10-28 09:49:43] > docker container inspect -f {{json .Config.Labels}} devops-api-staging => exit 1
+[2026-10-28 09:49:43]   Error response from daemon: No such container: devops-api-staging
+[2026-10-28 09:49:44] > docker container inspect -f {{json .Config.Labels}} devops-api-prod => exit 1
+[2026-10-28 09:49:44]   Error response from daemon: No such container: devops-api-prod
+[2026-10-28 09:49:44] > docker image inspect -f {{json .Config.Labels}} devops-webapi:1.0.0 => exit 0
+[2026-10-28 09:49:44]   {"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[2026-10-28 09:49:44] > docker ps -a --filter ancestor=devops-webapi:1.0.0 --format {{.Names}} => exit 0
+[2026-10-28 09:49:44] Verificada propriedade da tag devops-webapi:1.0.0
+[2026-10-28 09:49:44] > docker image inspect -f {{json .Config.Labels}} devops-webapi:1.1.0 => exit 0
+[2026-10-28 09:49:44]   {"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[2026-10-28 09:49:44] > docker ps -a --filter ancestor=devops-webapi:1.1.0 --format {{.Names}} => exit 0
+[2026-10-28 09:49:44] Verificada propriedade da tag devops-webapi:1.1.0
+[2026-10-28 09:49:44] > docker image inspect -f {{json .Config.Labels}} devops-webapi:1.2.0 => exit 0
+[2026-10-28 09:49:44]   {"ceub.devops.lab":"ceub-devops-unidade3","org.opencontainers.image.version":"24.04"}
+[2026-10-28 09:49:44] > docker ps -a --filter ancestor=devops-webapi:1.2.0 --format {{.Names}} => exit 0
+[2026-10-28 09:49:44] Verificada propriedade da tag devops-webapi:1.2.0
+[2026-10-28 09:49:44] [3/6] Removendo SOMENTE containers e tags verificados...
+[2026-10-28 09:49:44] > docker image rm devops-webapi:1.0.0 => exit 0
+[2026-10-28 09:49:44]   Untagged: devops-webapi:1.0.0
+[2026-10-28 09:49:44]   Deleted: sha256:d6b7724d7305a4996d8fc1f76eb8fdd8b53e819d87f3db299e42c09df69489a1
+[2026-10-28 09:49:44] > docker image rm devops-webapi:1.1.0 => exit 0
+[2026-10-28 09:49:44]   Untagged: devops-webapi:1.1.0
+[2026-10-28 09:49:44]   Deleted: sha256:8fdb751a59844f3e944f8f126b5f8f93efcd7ce729b1746c792e0fed58f361c8
+[2026-10-28 09:49:45] > docker image rm devops-webapi:1.2.0 => exit 0
+[2026-10-28 09:49:45]   Untagged: devops-webapi:1.2.0
+[2026-10-28 09:49:45]   Deleted: sha256:18a64977d1bb6660ad3af0a49170353220ca581d384c6610fbd6eb0b457a6b8c
+[2026-10-28 09:49:45] Limpeza concluida. Imagens-base e caches Docker preservados.

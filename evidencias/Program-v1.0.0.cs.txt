@@ -1,0 +1,39 @@
+// CEUB Unidade 3: API ASP.NET Core - .NET 10
+// Desafio avancado: health probe usando HttpClient do runtime (sem curl).
+if (args.Contains("--health-check"))
+{
+    try
+    {
+        using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(4) };
+        using var response = await client.GetAsync("http://127.0.0.1:8080/health");
+        Environment.ExitCode = response.IsSuccessStatusCode ? 0 : 1;
+    }
+    catch
+    {
+        Environment.ExitCode = 1;
+    }
+    return;
+}
+
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+var environment = Environment.GetEnvironmentVariable("APP_ENVIRONMENT") ?? "development";
+var version = Environment.GetEnvironmentVariable("APP_VERSION") ?? "local";
+
+app.MapGet("/", () => new {
+    application = "DevOps Web API",
+    version,
+    environment
+});
+
+app.MapGet("/health", () => new {
+    status = "healthy",
+    version,
+    environment,
+    timestamp = DateTime.UtcNow
+});
+
+
+
+app.Run();

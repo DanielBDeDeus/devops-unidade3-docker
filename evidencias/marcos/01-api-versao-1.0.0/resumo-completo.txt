@@ -1,0 +1,18 @@
+MARCO: 01-api-versao-1.0.0
+QUANDO: 2026-10-28T09:50:26.060-03:00
+ETAPA: 10/22 - Rodar, testar, inspecionar, parar e remover primeiro container
+EVIDENCIAS CAPTURADAS AO VIVO - NAO SIMULADAS
+docker ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}} ; exit=0
+devops-api|devops-webapi:1.0.0|Up 2 seconds|127.0.0.1:8080->8080/tcp
+docker image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}} ; exit=0
+devops-webapi:1.0.0|32e9d3541203|342MB
+CONTAINER devops-api ; exit=1
+
+template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+GET http://127.0.0.1:8080/
+HTTP 200
+{"application":"DevOps Web API","version":"1.0.0","environment":"development"}
+
+GET http://127.0.0.1:8080/health
+HTTP 200
+{"status":"healthy","version":"1.0.0","environment":"development","timestamp":"2026-10-28T12:50:28.2510059Z"}

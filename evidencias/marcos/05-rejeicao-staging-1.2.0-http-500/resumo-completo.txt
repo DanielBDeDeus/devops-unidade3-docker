@@ -1,0 +1,24 @@
+MARCO: 05-rejeicao-staging-1.2.0-http-500
+QUANDO: 2026-10-28T09:51:27.136-03:00
+ETAPA: 17/22 - Testar 1.2.0 em staging e BLOQUEAR promocao normal
+EVIDENCIAS CAPTURADAS AO VIVO - NAO SIMULADAS
+docker ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}} ; exit=0
+devops-api-staging|devops-webapi:1.2.0|Up 1 second|127.0.0.1:8081->8080/tcp
+devops-api-prod|devops-webapi:1.1.0|Up 20 seconds|127.0.0.1:8082->8080/tcp
+docker image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}} ; exit=0
+devops-webapi:1.2.0|c259cbb5f566|342MB
+devops-webapi:1.1.0|cf4728fe3520|342MB
+devops-webapi:1.0.0|32e9d3541203|342MB
+CONTAINER devops-api-staging ; exit=1
+
+template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+CONTAINER devops-api-prod ; exit=1
+
+template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+GET http://127.0.0.1:8081/health
+HTTP 500
+
+
+GET http://127.0.0.1:8082/health
+HTTP 200
+{"status":"healthy","version":"1.1.0","environment":"production","timestamp":"2026-10-28T12:51:30.0796841Z"}

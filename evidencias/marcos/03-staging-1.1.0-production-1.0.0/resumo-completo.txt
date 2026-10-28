@@ -1,0 +1,23 @@
+MARCO: 03-staging-1.1.0-production-1.0.0
+QUANDO: 2026-10-28T09:51:01.097-03:00
+ETAPA: 14/22 - Promover a versao 1.1.0 para staging e validar gate
+EVIDENCIAS CAPTURADAS AO VIVO - NAO SIMULADAS
+docker ps -a --filter label=ceub.devops.lab=ceub-devops-unidade3 --format {{.Names}}|{{.Image}}|{{.Status}}|{{.Ports}} ; exit=0
+devops-api-staging|devops-webapi:1.1.0|Up 1 second|127.0.0.1:8081->8080/tcp
+devops-api-prod|devops-webapi:1.0.0|Up 24 seconds|127.0.0.1:8082->8080/tcp
+docker image ls devops-webapi --format {{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}} ; exit=0
+devops-webapi:1.1.0|cf4728fe3520|342MB
+devops-webapi:1.0.0|32e9d3541203|342MB
+CONTAINER devops-api-staging ; exit=1
+
+template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+CONTAINER devops-api-prod ; exit=1
+
+template parsing error: template: :1:55: executing "" at <.State.Health>: map has no entry for key "Health"
+GET http://127.0.0.1:8081/version
+HTTP 200
+{"version":"1.1.0","environment":"staging","message":"Nova funcionalidade da versao 1.1"}
+
+GET http://127.0.0.1:8082/health
+HTTP 200
+{"status":"healthy","version":"1.0.0","environment":"production","timestamp":"2026-10-28T12:51:03.9264263Z"}
